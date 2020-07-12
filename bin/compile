@@ -12,7 +12,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 VENDOR_DIR="vendor"
 FILE="rclone.zip"
-DOWNLOAD_URL="https://raw.githubusercontent.com/magneto261290/heroku-buildpack-rclone-mod/master/rclone.zip"
+DOWNLOAD_URL="https://raw.githubusercontent.com/The-Antrax/heroku-buildpack-rclone-mod/master/rclone.zip"
 
 mkdir -p "$CACHE_DIR"
 
