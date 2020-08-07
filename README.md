@@ -51,7 +51,7 @@ heroku run bash --a myapp
 ```
 
 ### Rclone
-Learn more from [Rclone Docs](https://rclone.org/commands/) and [Gclone Docs](https://github.com/donwa/gclone)
+Learn more from [Rclone Docs](https://rclone.org/commands/) , [Gclone Docs](https://github.com/donwa/gclone)  and [Mawaya](https://github.com/mawaya/rclone)
 
 **Upload file to Google Drive**
 ```
@@ -99,3 +99,10 @@ rclone -v --transfers=16 --drive-chunk-size=16384k --drive-upload-cutoff=16384k 
 `--drive-upload-cutoff=N` should be same with chunk size
 
 `-v` option to view upload progress stats 
+
+## Credits 
+
+RClone - [RClone](https://github.com/rclone/rclone)
+Fclone - [Mawaya](https://github.com/mawaya/rclone)
+GClone - [donwa](https://github.com/donwa/gclone)
+Aria2 - [q3aql] (https://github.com/q3aql/aria2-static-builds)
