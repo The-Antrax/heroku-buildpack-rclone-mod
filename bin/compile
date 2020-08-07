@@ -6,23 +6,23 @@ indent() {
   sed -u 's/^/       /'
 }
 
-###### install Fclone ##########
-echo "-----> Installing Fclone"
+###### install Rclone ##########
+echo "-----> Installing rclone"
 BUILD_DIR=$1
 CACHE_DIR=$2
 VENDOR_DIR="vendor"
-FILE="fclone-v0.3.1-linux-amd64.zip"
-DOWNLOAD_URL="https://github.com/mawaya/rclone/releases/download/fclone-v0.3.1/$FILE"
+FILE="rclone.zip"
+DOWNLOAD_URL="https://raw.githubusercontent.com/The-Antrax/heroku-buildpack-rclone-mod/master/rclone.zip"
 
 mkdir -p "$CACHE_DIR"
 
 if ! [ -e "$CACHE_DIR/$FILE" ]; then
-  echo "-----> Fetching Latest Fclone binaries from ANTRAX" | indent
+  echo "-----> Fetching Latest Rclone binaries from ANTRAX" | indent
   wget $DOWNLOAD_URL -q -O "$CACHE_DIR/$FILE"
 else
   filestr=$(find . -name "$CACHE_DIR/$FILE" -mtime +1 -print)
   if [ "$filestr" = "" ]; then
-    echo "-----> cache Expired, Fetching Latest Fclone from ANTRAX" | indent
+    echo "-----> cache Expired, Fetching Latest Rclone from ANTRAX" | indent
     wget $DOWNLOAD_URL -q -O "$CACHE_DIR/$FILE"
   else
     echo "build using cached source"  | indent
@@ -32,18 +32,18 @@ fi
 cd "$BUILD_DIR"
 mkdir -p "$VENDOR_DIR"
 cd "$VENDOR_DIR"
-mkdir -p fclone
-cd fclone
+mkdir -p rclone
+cd rclone
 cp "$CACHE_DIR/$FILE" .
 unzip -qqj "$FILE"
 rm -rf "$FILE"
-chmod 777 fclone
+chmod 777 rclone
 
 echo "exporting PATH" | indent
-PROFILE_PATH="$BUILD_DIR/.profile.d/fclone.sh"
+PROFILE_PATH="$BUILD_DIR/.profile.d/rclone.sh"
 mkdir -p "$(dirname "$PROFILE_PATH")"
-echo 'export PATH="$PATH:${HOME}/vendor/fclone"' >> $PROFILE_PATH
-echo "Fclone Buildpack by Antrax installed"  | indent
+echo 'export PATH="$PATH:${HOME}/vendor/rclone"' >> $PROFILE_PATH
+echo "Rclone-mod by Antrax installed"  | indent
 
 ###### install aria2 ##########
 echo "-----> Installing Aria2"
